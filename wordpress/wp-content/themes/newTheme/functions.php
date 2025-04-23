@@ -24,11 +24,35 @@ function newTheme_scripts()
 
 }
 
+
+add_filter('nav_menu_link_attributes', 'add_anchor_class', 10, 3);
+add_filter('nav_menu_css_class', 'add_class_li', 10, 3);
+function add_class_li($classes, $item, $args)
+{
+    if (isset($args->li_class)) {
+        $classes[] = $args->li_class;
+    }
+    return $classes;
+}
+
+function add_anchor_class($attr, $item, $args)
+{
+    if (isset($args->a_class)) {
+        $attr['class'] = $args->a_class;
+    }
+    return $attr;
+}
 function _newTheme_assets_path($path)
 {
     return get_template_directory_uri() . '/assets/' . $path;
 }
-
+acf_add_options_page(array(
+  'page_title'     => 'Theme General Settings',
+  'menu_title'    => 'Theme Settings',
+  'menu_slug'     => 'theme-general-settings',
+  'capability'    => 'edit_posts',
+  'redirect'        => false
+));
 acf_add_options_sub_page(array(
     'page_title'     => 'Theme Header Settings',
     'menu_title'    => 'Header',
@@ -91,8 +115,8 @@ acf_add_options_sub_page(array(
 function newTheme()
 {
   register_nav_menu('menu-header', 'меню в шапке');
-  register_nav_menu('menu-mob',    'мобильное меню');
-  register_nav_menu('menu-footer', 'меню в подвале');
+  register_nav_menu('menu-fotter-service',    'меню в футоре услуги');
+  register_nav_menu('menu-fotter-quick', 'меню в футоре cсылки');
 
   add_theme_support('custom-logo');
   add_theme_support('title-tag');
