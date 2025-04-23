@@ -74,7 +74,30 @@
 
 
 
+<style>
+    .current_page_item a{
+        color: var(--primary) !important;
+    }
+    .menu ul{
+        display: flex;
+    }
+    .page_item{
+        list-style: none;
+    }
+    .page_item a {
+        margin-right: 30px;
+        padding: 25px 0;
+        color: var(--dark);
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: uppercase;
+        outline: none;
+    }
 
+    .breadcrumb{
+        background-color: transparent !important;
+    }
+</style>
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

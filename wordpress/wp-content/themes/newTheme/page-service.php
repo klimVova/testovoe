@@ -1,74 +1,44 @@
 <?php
 /* Template Name: Service page Template */
 get_header();
+$info = get_field('service');
+$appointment = get_field('appointment');
+$items = $info['blocks'];
+$elements = $appointment['ingo'];
 ?>
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Services</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb text-uppercase mb-0">
+                    <div class="section section-breadcrumb">
+                        <?php get_template_part('tmp/breadcrumbs'); ?>
+                    </div>
+                </ol>
+            </nav>
+        </div>
+    </div>
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <p class="d-inline-block border rounded-pill py-1 px-4">Services</p>
-            <h1>Health Care Solutions</h1>
+            <p class="d-inline-block border rounded-pill py-1 px-4"><?= $info['name'] ? $info['name'] : '';?></p>
+            <h1><?= $info['title'] ? $info['title'] : '';?></h1>
         </div>
         <div class="row g-4">
+            <?php
+                foreach($items as $item):
+            ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item bg-light rounded h-100 p-5">
                     <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                        <i class="fa fa-heartbeat text-primary fs-4"></i>
+                        <i class="<?= $item['icno'] ? $item['icno'] : '';?>"></i>
                     </div>
-                    <h4 class="mb-3">Cardiology</h4>
-                    <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
+                    <h4 class="mb-3"><?= $item['title'] ? $item['title'] : '';?></h4>
+                    <p class="mb-4"><?= $item['content'] ? $item['content'] : '';?></p>
                     <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item bg-light rounded h-100 p-5">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                        <i class="fa fa-x-ray text-primary fs-4"></i>
-                    </div>
-                    <h4 class="mb-3">Pulmonary</h4>
-                    <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                    <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item bg-light rounded h-100 p-5">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                        <i class="fa fa-brain text-primary fs-4"></i>
-                    </div>
-                    <h4 class="mb-3">Neurology</h4>
-                    <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                    <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item bg-light rounded h-100 p-5">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                        <i class="fa fa-wheelchair text-primary fs-4"></i>
-                    </div>
-                    <h4 class="mb-3">Orthopedics</h4>
-                    <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                    <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item bg-light rounded h-100 p-5">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                        <i class="fa fa-tooth text-primary fs-4"></i>
-                    </div>
-                    <h4 class="mb-3">Dental Surgery</h4>
-                    <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                    <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item bg-light rounded h-100 p-5">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                        <i class="fa fa-vials text-primary fs-4"></i>
-                    </div>
-                    <h4 class="mb-3">Laboratory</h4>
-                    <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>
-                    <a class="btn" href=""><i class="fa fa-plus text-primary me-3"></i>Read More</a>
-                </div>
-            </div>
+            <?php endforeach;?>
         </div>
     </div>
 </div>
@@ -80,27 +50,22 @@ get_header();
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <p class="d-inline-block border rounded-pill py-1 px-4">Appointment</p>
-                <h1 class="mb-4">Make An Appointment To Visit Our Doctor</h1>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                <p class="d-inline-block border rounded-pill py-1 px-4"><?= $appointment['name'] ? $appointment['name'] : '';?></p>
+                <h1 class="mb-4"><?= $appointment['title'] ? $appointment['title'] : '';?></h1>
+                <p class="mb-4"><?= $appointment['content'] ? $appointment['content'] : '';?></p>
+                <?php
+                    foreach($elements as $elem):
+                ?>
                 <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
                     <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
-                        <i class="fa fa-phone-alt text-primary"></i>
+                        <i class="<?= $elem['icon'] ? $elem['icon'] : '';?>"></i>
                     </div>
                     <div class="ms-4">
-                        <p class="mb-2">Call Us Now</p>
-                        <h5 class="mb-0">+012 345 6789</h5>
+                        <p class="mb-2"><?= $elem['text'] ? $elem['text'] : '';?></p>
+                        <h5 class="mb-0"><?= $elem['contact'] ? $elem['contact'] : '';?></h5>
                     </div>
                 </div>
-                <div class="bg-light rounded d-flex align-items-center p-5">
-                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
-                        <i class="fa fa-envelope-open text-primary"></i>
-                    </div>
-                    <div class="ms-4">
-                        <p class="mb-2">Mail Us Now</p>
-                        <h5 class="mb-0">info@example.com</h5>
-                    </div>
-                </div>
+                <?php  endforeach;?>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="bg-light rounded h-100 d-flex align-items-center p-5">
@@ -153,42 +118,6 @@ get_header();
 <!-- Appointment End -->
 
 
-<!-- Testimonial Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <p class="d-inline-block border rounded-pill py-1 px-4">Testimonial</p>
-            <h1>What Say Our Patients!</h1>
-        </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="testimonial-item text-center">
-                <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="img/testimonial-1.jpg" style="width: 100px; height: 100px;">
-                <div class="testimonial-text rounded text-center p-4">
-                    <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                    <h5 class="mb-1">Patient Name</h5>
-                    <span class="fst-italic">Profession</span>
-                </div>
-            </div>
-            <div class="testimonial-item text-center">
-                <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="img/testimonial-2.jpg" style="width: 100px; height: 100px;">
-                <div class="testimonial-text rounded text-center p-4">
-                    <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                    <h5 class="mb-1">Patient Name</h5>
-                    <span class="fst-italic">Profession</span>
-                </div>
-            </div>
-            <div class="testimonial-item text-center">
-                <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="img/testimonial-3.jpg" style="width: 100px; height: 100px;">
-                <div class="testimonial-text rounded text-center p-4">
-                    <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                    <h5 class="mb-1">Patient Name</h5>
-                    <span class="fst-italic">Profession</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Testimonial End -->
 
 
 <?php get_footer();?>
